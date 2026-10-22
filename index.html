@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#7254e8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="IPA Catalog">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+  <title>IPA Catalog</title>
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><div class="logo">IPA</div><div><strong>IPA Catalog</strong><small>Бесплатный каталог</small></div></div>
+    <button id="installBtn" class="install">На экран «Домой»</button>
+  </header>
+  <main>
+    <section class="hero">
+      <span class="eyebrow">ТВОЯ БИБЛИОТЕКА ПРИЛОЖЕНИЙ</span>
+      <h1>Всё нужное.<br><span>В одном месте.</span></h1>
+      <p>Каталог приложений для iPhone — простой, быстрый и бесплатный.</p>
+      <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Поиск приложений"></label>
+    </section>
+    <section class="section-head"><h2>Каталог</h2><span id="count">4 приложения</span></section>
+    <nav id="categories" class="categories">
+      <button class="active" data-category="Все">Все</button>
+      <button data-category="Утилиты">Утилиты</button>
+      <button data-category="Медиа">Медиа</button>
+      <button data-category="Инструменты">Инструменты</button>
+    </nav>
+    <section id="apps" class="apps"></section>
+    <section class="notice"><strong>Важно</strong><p>Это стартовая версия каталога. Кнопки скачивания появятся после добавления реальных IPA-файлов. Установка ярлыка сайта не подписывает и не устанавливает IPA автоматически.</p></section>
+  </main>
+  <footer>IPA Catalog · Бесплатный проект</footer>
+  <script src="app.js"></script>
+</body>
+</html>

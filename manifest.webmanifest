@@ -1,0 +1,9 @@
+{
+  "name": "IPA Catalog",
+  "short_name": "IPA Catalog",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7f7fb",
+  "theme_color": "#7254e8",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
