@@ -6,7 +6,7 @@
 ## Как опубликовать
 Загрузите содержимое этой папки в корень репозитория `bbarne77/ipaworldnewcatalog` и подтвердите замену файлов. GitHub Pages опубликует `ipaworld.mobileconfig` по адресу:
 
-`https://ipaworld-profile.pages.dev/ipaworld.mobileconfig`
+`https://bbarne77.github.io/ipaworldnewcatalog/ipaworld.mobileconfig`
 
 ## Установка на iPhone
 1. Откройте каталог в Safari.
@@ -16,6 +16,3 @@
 5. Вернитесь на экран «Домой» — там появится ярлык.
 
 Если профиль не появляется сразу, проверьте раздел «Основные» → «VPN и управление устройством». Названия пунктов могут немного отличаться в зависимости от версии iOS.
-
-
-Профиль размещён отдельно на Cloudflare Pages для правильного MIME-типа: `https://ipaworld-profile.pages.dev/ipaworld.mobileconfig`.
