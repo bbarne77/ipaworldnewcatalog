@@ -1,21 +1,11 @@
-# IPA Catalog web starter
+# iPAWORLD Catalog — update 3
 
-This is a static starter for GitHub Pages. It is **not** a signing service and currently contains demo entries only.
+Минималистичный каталог с CSS-макетом iPhone, категориями соцсетей, медиа, банков, магазинов, утилит и игр.
 
-## Publish on GitHub Pages
-1. Create a repository named `ipa-catalog`.
-2. Upload all files from this folder to the repository root.
-3. In repository Settings → Pages, choose **Deploy from a branch**, branch `main`, folder `/ (root)`, then Save.
-4. Wait for the published URL shown in Settings → Pages.
+## Публикация
+1. Откройте репозиторий `bbarne77/ipaworldnewcatalog`.
+2. Загрузите файлы из архива в корень репозитория и подтвердите замену.
+3. Нажмите Commit changes и дождитесь успешного GitHub Pages deployment.
 
-## Add to iPhone Home Screen
-Open the published URL in Safari → Share → Add to Home Screen → Add. This works without a configuration profile and is the simplest first step.
-
-## About `.mobileconfig`
-A Web Clip configuration profile can create a home-screen icon, but it needs the final HTTPS site URL and should be generated after the site is published. Installing a profile requires the user to approve it in iOS Settings.
-
-## Important next steps
-- The admin panel is not implemented in this starter. Do not make the repository public if you later add secrets or private files.
-- To let only the owner upload apps, add a backend with server-side authentication; static GitHub Pages alone cannot securely provide a private admin panel or safely store uploaded IPA files.
-- IPA signing/re-signing is not implemented. A Web Clip profile does not sign or install IPA files.
-GitHub Pages deployment retry
+## Важно
+Карточки пока демонстрационные: настоящие IPA-файлы и ссылки на скачивание не подключены. Упоминание банков в каталоге не означает аффилированности с банками.
