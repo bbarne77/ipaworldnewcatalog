@@ -36,9 +36,9 @@
 			<key>URL</key>
 			<string>https://bbarne77.github.io/ipaworldnewcatalog/</string>
 			<key>IsRemovable</key>
-			<true/>
-			<key>FullScreen</key>
 			<false/>
+			<key>FullScreen</key>
+			<true/>
 			<key>PrecomposedIcon</key>
 			<true/>
 			<key>Icon</key>
