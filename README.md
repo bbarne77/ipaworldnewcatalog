@@ -18,3 +18,4 @@ A Web Clip configuration profile can create a home-screen icon, but it needs the
 - The admin panel is not implemented in this starter. Do not make the repository public if you later add secrets or private files.
 - To let only the owner upload apps, add a backend with server-side authentication; static GitHub Pages alone cannot securely provide a private admin panel or safely store uploaded IPA files.
 - IPA signing/re-signing is not implemented. A Web Clip profile does not sign or install IPA files.
+GitHub Pages deployment retry
