@@ -8,3 +8,75 @@
 .profile-install-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:13px;background:linear-gradient(120deg,#079bff,#0872ed);color:#fff;text-decoration:none;font-size:13px;font-weight:750;box-shadow:0 8px 22px #007eff20}
 .profile-install p{margin:8px 0 0;color:#8098b7;font-size:10px;line-height:1.5}
 @media(max-width:600px){.profile-install{margin-top:10px}.profile-install-button{min-height:40px;padding:0 14px;font-size:12px}.profile-install p{max-width:300px;font-size:9px}}
+
+
+/* iPAWORLD visual refresh */
+:root{color-scheme:light;--blue:#087cff;--cyan:#13baff;--muted:#7185a5;--line:#dce8fa}
+html,body{background:#f3f7ff;color:#111827}
+body{background:radial-gradient(ellipse at 50% -15%,#d9eaff 0,transparent 48%),#f5f8ff}
+.topbar{height:82px;background:#ffffffd9;border-bottom:1px solid #e0e9f8;box-shadow:0 5px 24px #244f8a08}
+.brand-name span,.footer-brand span{color:#087cff}
+.brand-icon{width:48px;height:48px;border-radius:14px;overflow:hidden}
+.top-search,.search{background:#f8fbff;border-color:#dce7f8;color:#6b7f9d}
+.search input{color:#17243a}.search input::placeholder{color:#8495b1}
+.telegram{background:linear-gradient(120deg,#098cff,#0865ee);box-shadow:0 6px 18px #087cff28}
+.theme-toggle{height:42px;width:42px;border-radius:14px;border:1px solid #d9e5f6;background:#f7faff;color:#087cff;font-size:21px;cursor:pointer}
+.hero{background:linear-gradient(110deg,#f7fbff 0%,#e9f3ff 56%,#cce6ff 100%);border:1px solid #d9e9ff;border-radius:0 0 28px 28px;box-shadow:0 16px 40px #2b75cb0b}
+.hero:before{border-color:#168bff35;box-shadow:0 0 35px #168bff20,inset 0 0 45px #168bff18}
+.hero-glow{background:#168bff22}
+.hero h1{color:#101827}.hero h1 span{color:#087cff}.intro{color:#637a9a}
+.feature{border-color:#d7e6fa;background:#ffffffb8;box-shadow:0 4px 16px #4c83c30a}.feature>b{background:#e1efff;color:#087cff}
+.profile-install-button{box-shadow:0 8px 22px #087cff25}
+.profile-install p{color:#7a8eaa}
+.phone{filter:drop-shadow(0 24px 35px #3b6eab2b)}
+.catalog-head{margin-top:34px}.catalog-head h2{font-size:28px;color:#111827}
+.categories button{border-color:#dbe7f8;background:#fff;color:#647897;box-shadow:0 3px 12px #234d8407}
+.categories button.active{background:#087cff;border-color:#087cff;color:#fff;box-shadow:0 7px 17px #087cff2b}
+.apps{gap:12px}
+.app{border-color:#e0eaf8;border-radius:18px;background:linear-gradient(120deg,#fff,#f8fbff);box-shadow:0 5px 18px #214f8b08}
+.app:hover{border-color:#8fc4ff;box-shadow:0 10px 25px #2479cf12}
+.app h3{color:#172238}.app p{color:#7285a4}.meta{color:#8a9bb5}
+.appicon{box-shadow:0 5px 12px #0a75e91c,inset 0 1px 1px #ffffff66}
+.download{border-color:#d7e8fc;background:#eaf4ff;color:#087cff}
+.download.disabled{color:#7b91af;background:#f0f5fc}
+.notice{color:#7185a3}
+.notice span{border-color:#c6d9f2;color:#087cff}
+footer{border-color:#e0e9f6;color:#8192ac}
+.footer-brand{color:#111827}
+.bottom-nav{display:none}
+dialog{background:#fff;color:#172238;border-color:#dbe7f8}
+dialog li,dialog p{color:#647897}
+@media(max-width:600px){
+ .topbar{height:64px;background:#ffffffec}
+ .brand-icon{width:34px;height:34px}.brand-name{font-size:16px}
+ .hero{min-height:505px;border-radius:0 0 23px 23px;background:linear-gradient(145deg,#f8fbff,#d9ecff)}
+ .hero h1{font-size:43px}.phone-wrap{opacity:.74}
+ .catalog-head{margin-top:26px}.catalog-head h2{font-size:23px}
+ .apps{padding-bottom:92px}
+ .bottom-nav{display:flex;position:fixed;z-index:20;bottom:0;left:0;right:0;justify-content:space-around;align-items:center;padding:10px 8px calc(10px + env(safe-area-inset-bottom));border-top:1px solid #dce7f7;background:#ffffffed;backdrop-filter:blur(20px);box-shadow:0 -7px 24px #244e8b0a}
+ .bottom-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:54px;text-decoration:none;color:#8192ad;font-size:22px}
+ .bottom-nav a small{font-size:10px}.bottom-nav a.selected{color:#087cff}
+ footer{padding-bottom:84px}
+}
+body.dark{color:#f5f8ff;background:radial-gradient(ellipse at 73% 8%,#0b3260 0,transparent 36%),#050c16}
+body.dark .topbar{background:#050c16ed;border-color:#14263a}
+body.dark .brand-name,body.dark .catalog-head h2,body.dark .app h3,body.dark .footer-brand{color:#f5f8ff}
+body.dark .top-search,body.dark .search{background:#0d1c2e;border-color:#203954;color:#a9bfd8}
+body.dark .search input{color:white}
+body.dark .theme-toggle{background:#0d1c2e;border-color:#203954;color:#22b7ff}
+body.dark .hero{background:linear-gradient(105deg,#050c16 0%,#061326 54%,#092951 100%);border-color:#10263d}
+body.dark .hero h1{color:#f5f8ff}body.dark .intro{color:#a0b5d0}
+body.dark .feature{border-color:#183452;background:#0b1b2cbd}body.dark .feature>b{background:#082e55;color:#20baff}
+body.dark .categories button{border-color:#1c3149;background:#0a1727;color:#9eb3ce}
+body.dark .categories button.active{background:#087cff;border-color:#087cff;color:#fff}
+body.dark .app{border-color:#172b40;background:linear-gradient(115deg,#0b1726,#081321)}
+body.dark .app p{color:#92a9c5}body.dark .meta{color:#7089a8}
+body.dark .download{border-color:#1b3551;background:#102944;color:#eaf7ff}
+body.dark .download.disabled{color:#8398b1;background:#101e2f}
+body.dark .notice{color:#8298b3}body.dark .notice span{border-color:#34516d;color:#8bcfff}
+body.dark footer{border-color:#14263a;color:#7086a0}
+body.dark dialog{background:#0b1828;color:#f4f8ff;border-color:#244360}
+body.dark dialog li,body.dark dialog p{color:#a5bad4}
+body.dark .bottom-nav{background:#071321ed;border-color:#172b40}
+body.dark .bottom-nav a{color:#8198b8}body.dark .bottom-nav a.selected{color:#168bff}
+body.dark .profile-install p{color:#8098b7}

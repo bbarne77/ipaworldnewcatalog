@@ -24,3 +24,20 @@ document.querySelectorAll("[data-category]").forEach(btn=>btn.addEventListener("
 search.addEventListener("input",()=>{heroSearch.value=search.value;render()});heroSearch.addEventListener("input",()=>{search.value=heroSearch.value;render()});
 const dialog=document.querySelector("#installDialog");document.querySelector("#installBtn")?.addEventListener("click",()=>dialog.showModal());document.querySelector("#closeDialog")?.addEventListener("click",()=>dialog.close());
 if("serviceWorker" in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});render();
+
+// Theme switch
+const themeToggle=document.querySelector("#themeToggle");
+const savedTheme=localStorage.getItem("ipaworld-theme");
+if(savedTheme==="dark"){document.body.classList.add("dark");if(themeToggle)themeToggle.textContent="☀"}
+themeToggle?.addEventListener("click",()=>{
+ document.body.classList.toggle("dark");
+ const dark=document.body.classList.contains("dark");
+ themeToggle.textContent=dark?"☀":"☾";
+ document.querySelector('meta[name="theme-color"]')?.setAttribute("content",dark?"#050c16":"#f4f8ff");
+ try{localStorage.setItem("ipaworld-theme",dark?"dark":"light")}catch(e){}
+});
+document.querySelectorAll(".bottom-nav a").forEach(a=>a.addEventListener("click",()=>{
+ document.querySelectorAll(".bottom-nav a").forEach(x=>x.classList.remove("selected"));
+ a.classList.add("selected");
+ if(a.dataset.nav==="search"){setTimeout(()=>document.querySelector("#search")?.focus(),50)}
+}));
