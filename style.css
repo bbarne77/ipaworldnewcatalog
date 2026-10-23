@@ -1284,3 +1284,75 @@ article.app.app-clickable {
  .featured{padding-bottom:18px}
 }
 @media(prefers-reduced-motion:reduce){.catalog-cta{transition:none}}
+
+
+/* v137: clearer app controls, balanced hero buttons, no persistent blue card outline */
+.app-clickable:focus-visible,
+#apps > article.app.app-clickable:focus,
+#apps > article.app.app-clickable:focus-visible {
+  outline: none !important;
+  outline-offset: 0 !important;
+}
+#apps > article.app.app-clickable:focus-visible {
+  border-color: rgba(100,160,255,.24) !important;
+}
+#apps > article.app.app-clickable > .app-actions > .download,
+.apps .app .app-actions > .download {
+  min-height: 46px !important;
+  padding: 10px 13px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  border-radius: 13px !important;
+}
+#apps > article.app.app-clickable > .app-actions > .favorite-toggle,
+.apps .app .app-actions > .favorite-toggle {
+  min-height: 42px !important;
+  height: 42px !important;
+  padding: 8px 10px !important;
+  font-size: 19px !important;
+  gap: 7px !important;
+  border-radius: 13px !important;
+}
+#apps > article.app.app-clickable > .app-actions > .favorite-toggle span,
+.apps .app .app-actions > .favorite-toggle span {
+  font-size: 12px !important;
+  font-weight: 750 !important;
+}
+.hero-actions { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; align-items:stretch !important; gap:12px !important; }
+.hero-actions .primary-btn,
+.hero-actions .catalog-cta {
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  min-height:50px !important;
+  height:50px !important;
+  margin:0 !important;
+  padding:12px 14px !important;
+  border-radius:15px !important;
+  font-size:14px !important;
+  font-weight:800 !important;
+  line-height:1.2 !important;
+  white-space:normal !important;
+  text-align:center !important;
+}
+.hero-actions .catalog-cta {
+  border:1px solid rgba(90,160,255,.48) !important;
+  background:linear-gradient(120deg,rgba(15,112,235,.22),rgba(20,65,125,.18)) !important;
+  color:#eaf4ff !important;
+}
+@media(max-width:600px) {
+  #apps > article.app.app-clickable > .app-actions > .download,
+  .apps .app .app-actions > .download { min-height:46px !important; font-size:14px !important; }
+  #apps > article.app.app-clickable > .app-actions > .favorite-toggle,
+  .apps .app .app-actions > .favorite-toggle { min-height:42px !important; height:42px !important; }
+  #apps > article.app.app-clickable > .app-actions > .favorite-toggle span,
+  .apps .app .app-actions > .favorite-toggle span { font-size:12px !important; }
+  .hero-actions { gap:10px !important; }
+  .hero-actions .primary-btn,.hero-actions .catalog-cta { min-height:48px !important; height:48px !important; font-size:13px !important; padding:10px 8px !important; }
+}
+@media(max-width:360px) {
+  #apps > article.app.app-clickable > .app-actions > .download { font-size:12px !important; padding:8px 6px !important; }
+  #apps > article.app.app-clickable > .app-actions > .favorite-toggle span { font-size:10px !important; }
+  .hero-actions { grid-template-columns:1fr !important; }
+}
