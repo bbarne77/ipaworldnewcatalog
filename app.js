@@ -23,10 +23,33 @@ function closeMenu(){siteMenu.classList.remove("open");siteMenu.setAttribute("ar
 menuBtn.onclick=()=>siteMenu.classList.contains("open")?closeMenu():openMenu();$("#closeMenu").onclick=closeMenu;menuBackdrop.onclick=closeMenu;document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
 document.querySelectorAll("[data-menu-action]").forEach(btn=>btn.addEventListener("click",()=>{const action=btn.dataset.menuAction;closeMenu();if(action==="install")$("#installDialog").showModal();else if(action==="profile")$("#installDialog").showModal()}));$("#installBtn").onclick=()=>$("#installDialog").showModal();$("#closeDialog").onclick=()=>$("#installDialog").close();
 
-$("#showAll").onclick=()=>$("#apps").scrollIntoView({behavior:"smooth"});$("#filterBtn").onclick=()=>document.querySelector(".tabs").scrollIntoView({behavior:"smooth"});$("#categoriesNav").onclick=()=>document.querySelector(".tabs").scrollIntoView({behavior:"smooth"});$("#searchNav").onclick=()=>{search.focus();window.scrollTo({top:0,behavior:"smooth"})};$("#homeNav").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+$("#showAll").onclick=()=>$("#apps").scrollIntoView({behavior:"smooth"});$("#filterBtn").onclick=()=>document.querySelector(".tabs").scrollIntoView({behavior:"smooth"});const categoriesNav=$("#categoriesNav");if(categoriesNav)categoriesNav.onclick=()=>document.querySelector(".tabs").scrollIntoView({behavior:"smooth"});$("#searchNav").onclick=()=>{search.focus();window.scrollTo({top:0,behavior:"smooth"})};$("#homeNav").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 $("#shopNav").onclick=()=>$("#installDialog").showModal();
 $("#favoritesNav").onclick=()=>{document.querySelector("#listTitle").textContent="Избранное";document.querySelector("#apps").innerHTML='<div class="empty">Нажимай на сердечко в карточке приложения, чтобы добавить его в избранное.</div>';document.querySelector("#apps").scrollIntoView({behavior:"smooth",block:"start"})};
-render();
+function showAllAppsOnEntry(){
+ category="Все";
+ if(search) search.value="";
+ document.querySelectorAll("[data-category]").forEach(b=>{
+   const active=b.dataset.category==="Все";
+   b.classList.toggle("active",active);
+   b.setAttribute("aria-pressed",String(active));
+ });
+ render();
+}
+function bootCatalog(){
+ try {
+   showAllAppsOnEntry();
+ } catch(error) {
+   console.error("iPAWORLD: ошибка запуска каталога", error);
+   if(appsEl) appsEl.innerHTML='<div class="empty">Не удалось загрузить приложения. Обновите страницу.</div>';
+ }
+}
+if(document.readyState==="loading"){
+ document.addEventListener("DOMContentLoaded",bootCatalog,{once:true});
+} else {
+ bootCatalog();
+}
+window.addEventListener("pageshow",bootCatalog);
 // Детальная карточка приложения — открывается по нажатию на карточку каталога.
 const appDialog=document.querySelector('#appDialog');
 function openAppDetails(x){
