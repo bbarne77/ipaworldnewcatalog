@@ -635,7 +635,7 @@ body{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
 #apps > .app.app-clickable {
   box-sizing:border-box !important;
   display:grid !important;
-  grid-template-columns:56px minmax(0,1fr) max-content !important;
+  grid-template-columns:56px minmax(0,1fr) 36px max-content !important;
   align-items:center !important;
   gap:12px !important;
   width:100% !important;
@@ -664,6 +664,15 @@ body{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
   display:flex !important;flex-wrap:wrap !important;gap:2px 5px !important;
   font-size:11px !important;line-height:1.35 !important;min-width:0 !important;
 }
+#apps > .app.app-clickable .favorite-toggle {
+  grid-column:3 !important;
+  grid-row:1 !important;
+  justify-self:center !important;
+}
+#apps > .app.app-clickable .download {
+  grid-column:4 !important;
+  grid-row:1 !important;
+}
 #apps > .app.app-clickable .download {
   display:inline-flex !important;position:static !important;align-self:center !important;
   justify-self:end !important;min-width:94px !important;max-width:120px !important;
@@ -675,7 +684,9 @@ body{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
 .bottom-nav #shopNav b svg {width:29px;height:29px;stroke-width:1.8}
 .bottom-nav #favoritesNav b svg {width:28px;height:28px}
 @media(max-width:430px){
- #apps > .app.app-clickable {grid-template-columns:48px minmax(0,1fr) 88px !important;gap:9px !important;padding:10px 1px !important}
+ #apps > .app.app-clickable {grid-template-columns:48px minmax(0,1fr) 32px !important;gap:9px !important;padding:10px 1px !important}
+ #apps > .app.app-clickable .favorite-toggle {grid-column:3 !important;grid-row:1 !important;width:32px !important;height:32px !important}
+ #apps > .app.app-clickable .download {grid-column:2/4 !important;grid-row:2 !important;justify-self:stretch !important;margin-top:2px !important}
  #apps > .app.app-clickable .app-image {width:48px !important;height:48px !important;min-width:48px !important;max-width:48px !important}
  #apps > .app.app-clickable .app-info h3 {font-size:13px !important}
  #apps > .app.app-clickable .app-meta {font-size:10px !important}
@@ -685,3 +696,102 @@ body{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
 /* Never hide the app list on initial page load */
 #apps.apps{display:flex!important;visibility:visible!important;opacity:1!important}
 #apps.apps:empty{min-height:0!important}
+/* iPAWORLD favorites and certificate shop */
+.app{grid-template-columns:58px minmax(0,1fr) auto auto!important;align-items:center;gap:12px}
+.favorite-toggle{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(130,170,220,.22);border-radius:12px;background:rgba(255,255,255,.04);color:#a9bbd0;font-size:23px;line-height:1;cursor:pointer;flex-shrink:0}
+.favorite-toggle.is-favorite{color:#ff6488;border-color:rgba(255,100,136,.4);background:rgba(255,100,136,.1)}
+.certificate-dialog{width:min(620px,calc(100% - 28px));max-height:86dvh;overflow:auto;padding:24px;border:1px solid rgba(92,157,255,.28);border-radius:24px;background:#071321;color:#eef5ff;box-shadow:0 24px 90px #0009}
+.certificate-dialog::backdrop{background:rgba(0,5,13,.76);backdrop-filter:blur(5px)}
+.certificate-modal-heading small{color:#63a7ff;letter-spacing:.14em;font-weight:800;font-size:11px}.certificate-modal-heading h2{margin:8px 36px 6px 0;font-size:26px}.certificate-modal-heading p{color:#9eb1c8;margin:0 0 18px;font-size:14px}
+.certificate-options{display:grid;gap:10px}.certificate-option{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 12px;align-items:center;padding:15px;border:1px solid rgba(136,171,216,.16);border-radius:16px;background:rgba(255,255,255,.035)}.certificate-option h3{margin:0;font-size:16px}.certificate-option p{grid-column:1;margin:0;color:#9eb1c8;font-size:12px;line-height:1.45}.certificate-option strong{grid-column:2;grid-row:1;font-size:17px;white-space:nowrap}.certificate-option a{grid-column:2;grid-row:2;align-self:center;text-decoration:none;text-align:center;background:#2785ff;color:#fff;font-weight:750;padding:9px 18px;border-radius:10px;font-size:13px}.menu-links [data-menu-action="shop"]{width:100%;text-align:left;color:inherit;font:inherit;cursor:pointer}
+@media(max-width:480px){.app{grid-template-columns:48px minmax(0,1fr) auto!important;gap:9px;padding:11px}.app-image{width:48px;height:48px}.favorite-toggle{grid-column:3;grid-row:1;width:32px;height:32px}.app .download{grid-column:2/4;justify-self:stretch;margin-top:2px}.certificate-dialog{padding:20px 14px}.certificate-option{padding:12px;gap:6px 8px}.certificate-option h3{font-size:14px}.certificate-option p{font-size:11px}.certificate-option strong{font-size:15px}.certificate-option a{padding:8px 13px}}
+
+/* Subtle app icon motion: desktop hover, touch press, and no motion when requested */
+#apps > .app .app-image {
+  transform: translateZ(0) scale(1);
+  transition: transform 220ms cubic-bezier(.2,.75,.25,1), box-shadow 220ms ease, filter 220ms ease;
+  box-shadow: 0 3px 8px #001a3312;
+  will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) {
+  #apps > .app:hover .app-image {
+    transform: translateY(-2px) scale(1.055);
+    box-shadow: 0 5px 15px #087cff35, 0 0 0 1px #168bff22;
+    filter: saturate(1.06);
+  }
+}
+#apps > .app:active .app-image,
+#apps > .app .app-image:active {
+  transform: scale(.94);
+  box-shadow: 0 1px 4px #087cff20;
+}
+@media (prefers-reduced-motion: reduce) {
+  #apps > .app .app-image { transition: none !important; }
+}
+
+
+/* FINAL FIX: keep favorite heart in its own desktop grid column */
+#apps > .app.app-clickable { display:grid !important; grid-template-columns:56px minmax(0,1fr) 36px max-content !important; align-items:center !important; }
+#apps > .app.app-clickable > .favorite-toggle { display:grid !important; visibility:visible !important; opacity:1 !important; position:static !important; grid-column:3 !important; grid-row:1 !important; width:36px !important; height:36px !important; z-index:2 !important; }
+#apps > .app.app-clickable > .download { grid-column:4 !important; grid-row:1 !important; }
+#apps > .app.app-clickable > .app-image { transition: transform .24s ease, box-shadow .24s ease, filter .24s ease !important; transform:scale(1); }
+@media (hover:hover) and (pointer:fine) { #apps > .app.app-clickable:hover > .app-image { transform:translateY(-3px) scale(1.08) !important; box-shadow:0 8px 20px #087cff45, 0 0 0 1px #168bff30 !important; filter:saturate(1.12) !important; } }
+#apps > .app.app-clickable:active > .app-image { transform:scale(.93) !important; }
+@media (max-width:430px) { #apps > .app.app-clickable { grid-template-columns:48px minmax(0,1fr) 32px !important; } #apps > .app.app-clickable > .favorite-toggle { grid-column:3 !important; grid-row:1 !important; width:32px !important; height:32px !important; } #apps > .app.app-clickable > .download { grid-column:2/4 !important; grid-row:2 !important; justify-self:stretch !important; max-width:none !important; } }
+@media (prefers-reduced-motion:reduce) { #apps > .app.app-clickable > .app-image { transition:none !important; } }
+
+/* Hotfix 119: prevent favorite heart from overlapping the install button */
+#apps > article.app.app-clickable {
+  display: grid !important;
+  grid-template-columns: 56px minmax(0, 1fr) 36px max-content !important;
+  grid-template-rows: auto !important;
+  align-items: center !important;
+  column-gap: 12px !important;
+  row-gap: 8px !important;
+}
+#apps > article.app.app-clickable > .app-image { grid-column: 1 !important; grid-row: 1 !important; }
+#apps > article.app.app-clickable > .app-info { grid-column: 2 !important; grid-row: 1 !important; min-width: 0 !important; }
+#apps > article.app.app-clickable > button.favorite-toggle { grid-column: 3 !important; grid-row: 1 !important; position: static !important; margin: 0 !important; align-self: center !important; justify-self: center !important; width: 34px !important; height: 34px !important; z-index: 1 !important; }
+#apps > article.app.app-clickable > button.download { grid-column: 4 !important; grid-row: 1 !important; position: static !important; margin: 0 !important; justify-self: end !important; min-width: 94px !important; max-width: 120px !important; }
+@media (max-width: 600px) {
+  #apps > article.app.app-clickable { grid-template-columns: 48px minmax(0, 1fr) 32px !important; column-gap: 9px !important; padding: 10px 0 !important; }
+  #apps > article.app.app-clickable > .app-image { grid-column: 1 !important; grid-row: 1 !important; width: 48px !important; min-width: 48px !important; max-width: 48px !important; height: 48px !important; }
+  #apps > article.app.app-clickable > .app-info { grid-column: 2 !important; grid-row: 1 !important; }
+  #apps > article.app.app-clickable > button.favorite-toggle { grid-column: 3 !important; grid-row: 1 !important; width: 32px !important; height: 32px !important; }
+  #apps > article.app.app-clickable > button.download { grid-column: 2 / 4 !important; grid-row: 2 !important; justify-self: stretch !important; width: 100% !important; max-width: none !important; min-width: 0 !important; }
+}
+
+
+/* Rebuilt app-row layout v120: install stays on the RIGHT on phones too */
+#apps > article.app.app-clickable {
+  display:grid !important;
+  grid-template-columns:56px minmax(0,1fr) 34px 104px !important;
+  grid-template-rows:minmax(54px,auto) !important;
+  align-items:center !important;
+  gap:10px !important;
+  padding:12px !important;
+  box-sizing:border-box !important;
+  width:100% !important;
+  min-width:0 !important;
+}
+#apps > article.app.app-clickable > .app-image {grid-column:1 !important;grid-row:1 !important;width:56px !important;height:56px !important;object-fit:cover !important;border-radius:13px !important;}
+#apps > article.app.app-clickable > .app-info {grid-column:2 !important;grid-row:1 !important;min-width:0 !important;overflow:hidden !important;}
+#apps > article.app.app-clickable > .app-info h3 {margin:0 0 5px !important;line-height:1.25 !important;overflow-wrap:anywhere !important;}
+#apps > article.app.app-clickable > .app-info .app-meta {display:flex !important;flex-wrap:wrap !important;gap:2px 4px !important;line-height:1.3 !important;}
+#apps > article.app.app-clickable > .favorite-toggle {grid-column:3 !important;grid-row:1 !important;position:static !important;display:grid !important;visibility:visible !important;opacity:1 !important;place-items:center !important;justify-self:center !important;align-self:center !important;width:32px !important;height:32px !important;margin:0 !important;padding:0 !important;z-index:2 !important;}
+#apps > article.app.app-clickable > .download {grid-column:4 !important;grid-row:1 !important;position:static !important;display:inline-flex !important;align-items:center !important;justify-content:center !important;justify-self:end !important;align-self:center !important;width:104px !important;min-width:0 !important;max-width:104px !important;min-height:38px !important;margin:0 !important;padding:8px 6px !important;white-space:nowrap !important;box-sizing:border-box !important;font-size:12px !important;}
+@media (max-width:600px) {
+ #apps > article.app.app-clickable {grid-template-columns:44px minmax(0,1fr) 28px 84px !important;gap:6px !important;padding:10px 8px !important;grid-template-rows:minmax(48px,auto) !important;}
+ #apps > article.app.app-clickable > .app-image {width:44px !important;height:44px !important;border-radius:11px !important;}
+ #apps > article.app.app-clickable > .favorite-toggle {width:28px !important;height:30px !important;font-size:21px !important;}
+ #apps > article.app.app-clickable > .download {width:84px !important;max-width:84px !important;min-height:36px !important;padding:7px 4px !important;font-size:11px !important;}
+ #apps > article.app.app-clickable > .app-info h3 {font-size:12px !important;}
+ #apps > article.app.app-clickable > .app-info .app-meta {font-size:9px !important;}
+ #apps > article.app.app-clickable .meta-sep {display:none !important;}
+}
+@media (max-width:360px) {
+ #apps > article.app.app-clickable {grid-template-columns:38px minmax(0,1fr) 26px 76px !important;gap:5px !important;padding:9px 6px !important;}
+ #apps > article.app.app-clickable > .app-image {width:38px !important;height:38px !important;}
+ #apps > article.app.app-clickable > .favorite-toggle {width:26px !important;height:28px !important;}
+ #apps > article.app.app-clickable > .download {width:76px !important;max-width:76px !important;font-size:10px !important;}
+}
