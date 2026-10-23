@@ -1356,3 +1356,71 @@ article.app.app-clickable {
   #apps > article.app.app-clickable > .app-actions > .favorite-toggle span { font-size:10px !important; }
   .hero-actions { grid-template-columns:1fr !important; }
 }
+
+/* v138: mobile button-fit fix — keep labels inside controls on every phone width */
+.hero-actions {
+  display:grid !important;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) !important;
+  gap:8px !important;
+  align-items:stretch !important;
+}
+.hero-actions .primary-btn,
+.hero-actions .catalog-cta {
+  min-width:0 !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:48px !important;
+  padding:9px 7px !important;
+  font-size:12px !important;
+  line-height:1.2 !important;
+  text-align:center !important;
+  overflow-wrap:normal !important;
+  word-break:normal !important;
+}
+.hero-actions .catalog-cta {gap:4px !important;}
+.hero-actions .catalog-cta span {flex:0 0 auto !important;font-size:16px !important;}
+#apps > article.app.app-clickable > .app-actions > .download,
+.apps .app .app-actions > .download {
+  box-sizing:border-box !important;
+  min-width:0 !important;
+  max-width:100% !important;
+  padding:8px 4px !important;
+  font-size:12px !important;
+  line-height:1.15 !important;
+  letter-spacing:-.2px !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:clip !important;
+}
+#apps > article.app.app-clickable > .app-actions > .favorite-toggle,
+.apps .app .app-actions > .favorite-toggle {
+  box-sizing:border-box !important;
+  min-width:0 !important;
+  max-width:100% !important;
+  padding:5px 3px !important;
+  gap:4px !important;
+  overflow:hidden !important;
+  white-space:nowrap !important;
+}
+#apps > article.app.app-clickable > .app-actions > .favorite-toggle span,
+.apps .app .app-actions > .favorite-toggle span {
+  min-width:0 !important;
+  font-size:10px !important;
+  line-height:1.1 !important;
+  letter-spacing:-.2px !important;
+  overflow:hidden !important;
+  text-overflow:clip !important;
+}
+@media(max-width:600px) {
+  #apps > article.app.app-clickable > .app-actions > .download,
+  .apps .app .app-actions > .download {font-size:11px !important;padding:8px 3px !important;}
+  #apps > article.app.app-clickable > .app-actions > .favorite-toggle span,
+  .apps .app .app-actions > .favorite-toggle span {font-size:9px !important;}
+}
+@media(max-width:360px) {
+  .hero-actions {grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr) !important;gap:6px !important;}
+  .hero-actions .primary-btn,.hero-actions .catalog-cta {font-size:11px !important;padding:8px 5px !important;}
+  #apps > article.app.app-clickable > .app-actions > .download,
+  .apps .app .app-actions > .download {font-size:10px !important;}
+}
+button:focus:not(:focus-visible), a:focus:not(:focus-visible) {outline:none !important;}
