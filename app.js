@@ -2,12 +2,32 @@ const items = [{"appName": " FL Studio Mobile", "appVersion": "4.9.4 | 317 MB | 
 let category="Приложения";const $=s=>document.querySelector(s),appsEl=$("#apps"),search=$("#search");
 const classify=x=>{const s=(x.appName+" "+x.appDescription).toLowerCase();if(/банк|сбер|т-банк|альфа|втб|тинькофф|газпромбанк|райффайзен|россельхозбанк|почта банк|совкомбанк/.test(s))return"Банки";if(/game|игр|minecraft|terraria|brawl|roblox|standoff|genshin|pubg|clash|subway surfers|among us|geometry dash|монополия|шахмат/.test(s))return"Игры";return"Приложения"};
 function esc(s){return String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
-function render(){const q=search.value.trim().toLowerCase();const shown=items.filter(x=>classify(x)===category&&[x.appName,x.appVersion,x.appDescription].join(" ").toLowerCase().includes(q));$("#count").textContent=shown.length+" приложений";$("#listTitle").textContent=category;appsEl.innerHTML=shown.length?shown.map(x=>`<article class="app"><img class="app-image" src="${esc(x.appImage||"icon.png")}" alt="" loading="lazy" onerror="this.onerror=null;this.src='icon.png'"><div class="app-info"><h3>${esc(x.appName.trim())}</h3><p>${classify(x)}</p></div><a class="download" href="${esc(x.appPackage||"#")}" target="_blank" rel="noopener">Установить</a></article>`).join(""):`<div class="empty">Ничего не найдено</div>`}
+function render(){const q=search.value.trim().toLowerCase();const shown=items.filter(x=>classify(x)===category&&[x.appName,x.appVersion,x.appDescription].join(" ").toLowerCase().includes(q));$("#count").textContent=shown.length+" приложений";$("#listTitle").textContent=category;appsEl.innerHTML=shown.length?shown.map((x,i)=>`<article class="app app-clickable" tabindex="0" role="button" data-app-index="${items.indexOf(x)}" aria-label="Подробнее о ${esc(x.appName.trim())}"><img class="app-image" src="${esc(x.appImage||"icon.png")}" alt="" loading="lazy" onerror="this.onerror=null;this.src='icon.png'"><div class="app-info"><h3>${esc(x.appName.trim())}</h3><p>${classify(x)} · ${esc((x.appVersion||"").split("|")[0].trim())}</p></div><button class="download" type="button" data-open-app="${items.indexOf(x)}">Установить </button></article>`).join(""):`<div class="empty">Ничего не найдено</div>`;
+appsEl.querySelectorAll('[data-app-index]').forEach(card=>{const open=()=>openAppDetails(items[Number(card.dataset.appIndex)]);card.addEventListener('click',e=>{if(e.target.closest('a'))return;open()});card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});}
 document.querySelectorAll("[data-category]").forEach(btn=>btn.addEventListener("click",()=>{category=btn.dataset.category;document.querySelectorAll(".tabs [data-category]").forEach(b=>b.classList.toggle("active",b.dataset.category===category));document.querySelectorAll(".quick-categories [data-category]").forEach(b=>b.classList.toggle("active",b.dataset.category===category));render()}));
 search.addEventListener("input",render);
 const root=document.documentElement;root.dataset.theme="dark";try{localStorage.setItem("ipaworld-theme","dark")}catch(e){}
-$("#profileTopBtn").onclick=()=>$("#installDialog").showModal();
-$("#helpBtn").onclick=()=>$("#installDialog").showModal();$("#installBtn").onclick=()=>$("#installDialog").showModal();$("#profileNav").onclick=()=>$("#installDialog").showModal();$("#closeDialog").onclick=()=>$("#installDialog").close();
+const menuBtn=$("#menuBtn"),siteMenu=$("#siteMenu"),menuBackdrop=$("#menuBackdrop");
+function openMenu(){siteMenu.classList.add("open");siteMenu.setAttribute("aria-hidden","false");menuBtn.setAttribute("aria-expanded","true");menuBackdrop.hidden=false;document.body.classList.add("no-scroll")}
+function closeMenu(){siteMenu.classList.remove("open");siteMenu.setAttribute("aria-hidden","true");menuBtn.setAttribute("aria-expanded","false");menuBackdrop.hidden=true;document.body.classList.remove("no-scroll")}
+menuBtn.onclick=()=>siteMenu.classList.contains("open")?closeMenu():openMenu();$("#closeMenu").onclick=closeMenu;menuBackdrop.onclick=closeMenu;document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
+document.querySelectorAll("[data-menu-action]").forEach(btn=>btn.addEventListener("click",()=>{const action=btn.dataset.menuAction;closeMenu();if(action==="install")$("#installDialog").showModal();else if(action==="profile")$("#installDialog").showModal()}));$("#installBtn").onclick=()=>$("#installDialog").showModal();$("#profileNav").onclick=()=>$("#installDialog").showModal();$("#closeDialog").onclick=()=>$("#installDialog").close();
 $("#browseBtn").onclick=()=>{if(items.length){const x=items.find(x=>x.appName.toLowerCase().includes("minecraft"));if(x)window.open(x.appPackage,"_blank","noopener");else $("#apps").scrollIntoView({behavior:"smooth"})}};
 $("#showAll").onclick=()=>$("#apps").scrollIntoView({behavior:"smooth"});$("#filterBtn").onclick=()=>document.querySelector(".tabs").scrollIntoView({behavior:"smooth"});$("#categoriesNav").onclick=()=>document.querySelector(".tabs").scrollIntoView({behavior:"smooth"});$("#searchNav").onclick=()=>{search.focus();window.scrollTo({top:0,behavior:"smooth"})};$("#homeNav").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 render();
+// Детальная карточка приложения — открывается по нажатию на карточку каталога.
+const appDialog=document.querySelector('#appDialog');
+function openAppDetails(x){
+ if(!x)return;
+ document.querySelector('#detailImage').src=x.appImage||'icon.png';
+ document.querySelector('#detailTitle').textContent=(x.appName||'').trim();
+ document.querySelector('#detailMeta').textContent=(x.appVersion||'Версия не указана').replace(/\s*\|\s*/g,' · ');
+ const description=document.querySelector('#detailDescription');
+ description.textContent=(x.appDescription||'Описание для этого приложения пока не добавлено').replace(/▎/g,'').split('\n').map(s=>s.trim()).filter(Boolean).join('\n');
+ const botLink=document.querySelector('#detailBot');
+ botLink.href='https://t.me/bbarne77';
+ botLink.setAttribute('aria-label','Установить '+(x.appName||'приложение').trim()+' через Telegram');
+ appDialog.showModal();
+}
+document.querySelector('#closeAppDialog').addEventListener('click',()=>appDialog.close());
+appDialog.addEventListener('click',e=>{if(e.target===appDialog)appDialog.close()});
