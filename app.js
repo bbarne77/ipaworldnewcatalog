@@ -62,8 +62,10 @@ const items = [{"appName": " FL Studio Mobile", "appVersion": "4.9.4 | 317 MB | 
       return `<article class="app app-clickable" tabindex="0" data-app-index="${index}" aria-label="Подробнее о ${escapeHTML(name)}">
         <img class="app-image" src="${escapeHTML(item.appImage || 'icon.png')}" alt="" loading="lazy" onerror="this.onerror=null;this.src='icon.png'">
         <div class="app-info"><h3>${escapeHTML(name)}</h3><p class="app-meta"><span>${escapeHTML(item.appDate || 'Дата не указана')}</span><span class="meta-sep">·</span><span>${escapeHTML(versionParts[0] || 'Версия не указана')}</span><span class="meta-sep">·</span><span>${escapeHTML(versionParts[1] || 'Размер не указан')}</span></p></div>
-        <button class="favorite-toggle ${favorite ? 'is-favorite' : ''}" type="button" data-favorite="${index}" aria-label="${favorite ? 'Убрать из избранного' : 'Добавить в избранное'}" aria-pressed="${favorite}">${favorite ? '♥' : '♡'}</button>
-        <button class="download" type="button" data-open-app="${index}">Установить</button>
+        <div class="app-actions">
+          <button class="download" type="button" data-open-app="${index}">Установить</button>
+          <button class="favorite-toggle ${favorite ? 'is-favorite' : ''}" type="button" data-favorite="${index}" aria-label="${favorite ? 'Убрать из избранного' : 'Добавить в избранное'}" aria-pressed="${favorite}">${favorite ? '♥' : '♡'} <span>Избранное</span></button>
+        </div>
       </article>`;
     }).join('') : `<div class="empty">${state.view === 'favorites' ? 'Избранное пусто. Нажми ♡ рядом с приложением, чтобы сохранить его.' : (state.query ? 'Ничего не найдено. Измени запрос или выбери другую категорию.' : 'В этой категории пока нет приложений.')}</div>`;
   }
@@ -117,7 +119,15 @@ const items = [{"appName": " FL Studio Mobile", "appVersion": "4.9.4 | 317 MB | 
       event.preventDefault(); openAppDetails(items[Number(card.dataset.appIndex)]);
     }
   });
-  categoryButtons.forEach(button => button.addEventListener('click', () => setCatalog(button.dataset.category || 'Все')));
+  function jumpToCatalog() {
+    const target = $('#apps');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  categoryButtons.forEach(button => button.addEventListener('click', () => {
+    setCatalog(button.dataset.category || 'Все');
+    jumpToCatalog();
+  }));
+  $('#goCatalogBtn')?.addEventListener('click', jumpToCatalog);
   searchEl?.addEventListener('input', () => { state.query = searchEl.value || ''; render(); });
   $('#showAll')?.addEventListener('click', () => { if (searchEl) searchEl.value = ''; state.query = ''; setCatalog('Все'); $('#apps')?.scrollIntoView({behavior:'smooth'}); });
   $('#filterBtn')?.addEventListener('click', () => $('.tabs')?.scrollIntoView({behavior:'smooth', block:'center'}));
