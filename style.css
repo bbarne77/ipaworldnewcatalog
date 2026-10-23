@@ -60,159 +60,64 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}img{max-width:100%}main{wi
 #detailBot.primary-btn span{font-size:19px;opacity:.95}
 @media(max-width:480px){.app-dialog{padding:21px 18px 18px;border-radius:24px}.app-detail-head{gap:15px;padding:12px 0 19px}.app-detail-head img{width:78px;height:78px;border-radius:20px}.app-detail-description{padding:15px 15px 16px;margin-bottom:18px;font-size:13.5px}.app-detail-actions{margin-top:0}#detailBot.primary-btn{min-height:54px}}
 
-#browseBtn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;cursor:pointer}
-
-/* Modal install button: no arrow icon */
-#detailBot span{display:none!important}
-#detailBot{gap:0!important}
-.site-footer{margin:30px 0 18px;padding:24px;border:1px solid rgba(105,155,230,.18);border-radius:22px;background:linear-gradient(135deg,rgba(15,34,66,.96),rgba(10,19,35,.98));box-shadow:0 12px 32px rgba(0,0,0,.12)}
-.site-footer-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;align-items:start}
-.site-footer-brand{font-weight:850;font-size:19px;letter-spacing:-.4px;color:var(--text,#f4f7ff)}
-.site-footer-brand em{font-style:normal;color:#3190ff}
-.site-footer-copy{font-size:13px;line-height:1.65;color:var(--muted,#9eabc0);margin:9px 0 0;max-width:360px}
-.site-footer-title{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#8da5c8;font-weight:800;margin-bottom:10px}
-.site-footer-links{display:flex;flex-wrap:wrap;gap:9px}
-.site-footer-links a{display:inline-flex;align-items:center;padding:9px 12px;border-radius:12px;border:1px solid rgba(148,174,215,.16);background:rgba(255,255,255,.035);color:#dce8ff;text-decoration:none;font-size:13px;font-weight:650;transition:background .18s,border-color .18s}
-.site-footer-links a:hover{background:rgba(39,127,255,.12);border-color:rgba(57,143,255,.45)}
-.site-footer-bottom{border-top:1px solid rgba(148,174,215,.13);margin-top:20px;padding-top:14px;color:#7789a6;font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:560px){.site-footer{padding:19px 16px;margin-top:24px}.site-footer-grid{grid-template-columns:1fr;gap:18px}.site-footer-copy{max-width:none}}
-
-/* About section inspired by the existing IPAWORLD project style */
-.about-ipaworld{margin:34px 0 18px;padding:clamp(22px,4vw,38px);border:1px solid rgba(91,151,255,.22);border-radius:26px;background:radial-gradient(ellipse at 100% 0,rgba(34,113,255,.17),transparent 42%),linear-gradient(145deg,#0e1d35,#091321 78%);box-shadow:0 18px 48px rgba(0,0,0,.16);overflow:hidden}
-.about-intro{max-width:720px;margin:0 auto 26px;text-align:center}
-.about-eyebrow{display:inline-flex;padding:7px 11px;border-radius:999px;border:1px solid rgba(78,150,255,.28);background:rgba(44,126,255,.09);color:#7fb5ff;font-size:10px;font-weight:850;letter-spacing:.12em}
-.about-intro h2{font-size:clamp(23px,4vw,34px);line-height:1.15;letter-spacing:-.8px;margin:14px 0 11px;color:#f5f8ff}
-.about-intro h2 span{color:#69a9ff}
-.about-intro p{max-width:620px;margin:0 auto;color:#aebbd0;line-height:1.7;font-size:14px}
-.about-features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
-.about-feature{padding:19px;border:1px solid rgba(150,181,225,.13);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));min-width:0}
-.about-feature-icon{display:grid;place-items:center;width:38px;height:38px;margin-bottom:14px;border-radius:12px;background:rgba(39,124,255,.15);border:1px solid rgba(69,145,255,.23);color:#75b0ff;font-size:23px;font-weight:800}
-.about-feature h3{margin:0 0 8px;color:#f1f5ff;font-size:15px;line-height:1.3}
-.about-feature p{margin:0;color:#9eacc2;font-size:12.5px;line-height:1.65}
-.about-bottom{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:15px;padding:19px 21px;border-radius:18px;background:rgba(33,108,226,.10);border:1px solid rgba(75,139,255,.18)}
-.about-bottom strong{font-size:15px;color:#f5f8ff}.about-bottom p{margin:5px 0 0;color:#9eacc2;font-size:12.5px;line-height:1.5}
-.about-actions{display:flex;gap:9px;flex-wrap:wrap}.about-actions a{padding:11px 14px;border-radius:12px;background:#2678f3;color:#fff;text-decoration:none;font-size:12px;font-weight:750;white-space:nowrap}.about-actions a+ a{background:rgba(255,255,255,.05);border:1px solid rgba(160,185,225,.18)}
-.site-footer{margin-top:12px;padding:0;border:0;background:transparent;box-shadow:none}.site-footer .site-footer-bottom{margin-top:0;padding:15px 2px;border-top:1px solid rgba(148,174,215,.13)}
-@media(max-width:700px){.about-features{grid-template-columns:1fr}.about-feature{display:grid;grid-template-columns:38px 1fr;column-gap:13px;padding:15px}.about-feature-icon{grid-row:span 2;margin:0}.about-feature h3{align-self:end;margin-bottom:5px}.about-feature p{grid-column:2}.about-bottom{align-items:flex-start;flex-direction:column;padding:17px}.about-actions{width:100%}.about-actions a{flex:1;text-align:center}}
-
-/* App catalog: responsive premium grid instead of a plain vertical list */
-.apps{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
-  align-items:stretch;
+/* Responsive layout hardening: compact iPhones, iPads and desktop */
+*,*::before,*::after{box-sizing:border-box}
+html{width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{width:100%;min-width:0;overflow-x:hidden}
+img,svg,video,canvas{max-width:100%;height:auto}
+button,a,input,select,textarea{max-width:100%}
+.topbar{display:flex;align-items:center;min-width:0;gap:clamp(6px,1.5vw,16px);padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+.brand{display:flex;align-items:center;flex:1 1 auto;min-width:0;gap:clamp(6px,1.2vw,12px)}
+.brand-logo{flex:0 0 auto;object-fit:contain}
+.brand-copy{display:flex;flex-direction:column;min-width:0;flex:1 1 auto}
+.brand-copy strong{white-space:nowrap;line-height:1.1}
+.brand-copy small{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.25}
+.install-top{flex:0 0 auto;white-space:nowrap;line-height:1.15;min-height:42px}
+.menu-btn{flex:0 0 auto}
+main,.main,.container,.content,.section,.hero,.hero-card{min-width:0;max-width:100%}
+.hero-card,.app-card,.category-card,.search-row,.tabs,.app-grid{min-width:0}
+.app-card *, .hero-card *, .category-card *{overflow-wrap:anywhere}
+@media(max-width:600px){
+ .topbar{height:auto;min-height:68px;gap:7px;padding-top:8px;padding-bottom:8px}
+ .brand-copy strong{font-size:clamp(14px,4.1vw,21px);letter-spacing:-.4px}
+ .brand-copy small{font-size:clamp(8px,2.4vw,12px)}
+ .install-top{padding:10px clamp(8px,2.3vw,14px);font-size:clamp(10px,2.8vw,14px);border-radius:13px}
+ .menu-btn{width:clamp(36px,10vw,44px);height:clamp(36px,10vw,44px)}
+ .hero-card{grid-template-columns:minmax(0,1fr) minmax(72px,32%);gap:12px;padding:clamp(16px,4vw,28px)}
+ .hero-card h1,.hero-card h2{font-size:clamp(25px,7vw,42px);line-height:1.08;overflow-wrap:normal}
+ .hero-card p{font-size:clamp(14px,3.9vw,19px);line-height:1.45}
+ .hero-card img{max-width:100%;object-fit:contain}
+ .app-grid{grid-template-columns:minmax(0,1fr)!important}
+ .app-card{min-width:0}
 }
-.apps .app{
-  min-width:0;
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:11px;
-  padding:14px;
-  border:1px solid var(--line);
-  border-radius:20px;
-  background:linear-gradient(155deg,var(--panel2),var(--panel));
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
-  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+@media(max-width:390px){
+ .topbar{gap:6px;padding-left:8px;padding-right:8px}
+ .brand{gap:5px}
+ .brand-logo{width:clamp(30px,9vw,38px);height:clamp(30px,9vw,38px)}
+ .brand-copy strong{font-size:clamp(12px,3.8vw,16px);letter-spacing:-.5px}
+ .brand-copy small{font-size:8px;letter-spacing:-.15px}
+ .install-top{min-height:36px;padding:8px 7px;font-size:10px;border-radius:11px}
+ .menu-btn{width:35px;height:35px;border-radius:11px}
 }
-.apps .app:hover{transform:translateY(-3px);border-color:rgba(48,137,255,.48);box-shadow:0 12px 28px rgba(0,65,150,.16)}
-.apps .app-image{width:clamp(54px,7vw,72px);height:clamp(54px,7vw,72px);max-width:100%;max-height:none;border-radius:17px;box-shadow:0 5px 14px rgba(0,0,0,.16)}
-.apps .app-info{width:100%;flex:1;min-width:0}
-.apps .app-info h3{font-size:14px;line-height:1.3;margin:0 0 6px;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.apps .app-info p{font-size:11px;line-height:1.4;color:var(--muted);margin:0;overflow-wrap:anywhere}
-.apps .download{width:100%;min-height:38px;padding:9px 8px;border:1px solid rgba(60,145,255,.22);border-radius:12px;background:linear-gradient(110deg,#1268e8,#2588ff);color:#fff;font-size:12px;font-weight:750;text-align:center;box-shadow:0 5px 13px rgba(8,124,255,.16)}
-.apps .download:hover{filter:brightness(1.08)}
-@media(max-width:560px){
-  .apps{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .apps .app{padding:12px;border-radius:17px;gap:10px}
-  .apps .app-image{width:58px;height:58px;border-radius:15px}
-  .apps .app-info h3{font-size:13px}
-  .apps .download{min-height:37px;font-size:11px}
+@media(max-width:340px){
+ .brand-copy small{display:none}
+ .brand-copy strong{font-size:12px}
+ .install-top{font-size:9px;padding:7px 6px}
+ .topbar{gap:5px}
 }
-@media(max-width:340px){.apps{gap:8px}.apps .app{padding:9px}.apps .app-image{width:49px;height:49px}}
-
-
-/* iPAWORLD catalog layout inspired by the supplied reference: horizontal app rows */
-.apps{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  column-gap:26px;
-  row-gap:0;
-  align-items:start;
+@media(min-width:601px) and (max-width:1024px){
+ .topbar{padding-left:clamp(16px,3vw,32px);padding-right:clamp(16px,3vw,32px)}
+ .brand-copy strong{font-size:clamp(20px,2.7vw,28px)}
+ .brand-copy small{font-size:clamp(11px,1.5vw,15px)}
+ .app-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-.apps .app{
-  display:grid;
-  grid-template-columns:58px minmax(0,1fr) auto;
-  align-items:center;
-  flex-direction:initial;
-  gap:14px;
-  min-width:0;
-  min-height:86px;
-  padding:13px 0;
-  border:0;
-  border-bottom:1px solid var(--line);
-  border-radius:0;
-  background:transparent;
-  box-shadow:none;
-  transition:background .18s ease;
+@media(min-width:1025px){
+ body{font-size:16px}
+ .topbar{padding-left:max(24px,calc((100vw - 1240px)/2));padding-right:max(24px,calc((100vw - 1240px)/2))}
+ main,.main,.container,.content{width:min(1240px,calc(100% - 48px));margin-left:auto;margin-right:auto}
+ .app-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-.apps .app:hover{
-  transform:none;
-  border-color:var(--line);
-  box-shadow:none;
-  background:rgba(75,130,220,.045);
-}
-.apps .app-image{
-  width:58px;
-  height:58px;
-  max-width:58px;
-  max-height:58px;
-  border-radius:15px;
-  box-shadow:none;
-  object-fit:cover;
-}
-.apps .app-info{width:auto;min-width:0;flex:initial}
-.apps .app-info h3{
-  font-size:14px;
-  line-height:1.35;
-  margin:0 0 5px;
-  font-weight:700;
-  display:block;
-  overflow-wrap:anywhere;
-}
-.apps .app-info p{
-  font-size:11px;
-  line-height:1.35;
-  color:var(--muted);
-  margin:0;
-  overflow-wrap:anywhere;
-}
-.apps .download{
-  width:auto;
-  min-width:92px;
-  min-height:36px;
-  padding:9px 15px;
-  border:1px solid rgba(110,80,220,.07);
-  border-radius:999px;
-  background:var(--panel2);
-  color:var(--accent,#8b5cf6);
-  font-size:11px;
-  font-weight:750;
-  text-align:center;
-  box-shadow:0 3px 10px rgba(0,0,0,.035);
-  white-space:nowrap;
-}
-.apps .download:hover{filter:brightness(1.04);transform:translateY(-1px)}
-@media(max-width:680px){
-  .apps{grid-template-columns:minmax(0,1fr);column-gap:0}
-  .apps .app{grid-template-columns:56px minmax(0,1fr) auto;gap:13px;min-height:82px;padding:12px 0}
-  .apps .app-image{width:56px;height:56px;max-width:56px;max-height:56px;border-radius:14px}
-  .apps .app-info h3{font-size:14px}
-  .apps .download{min-width:82px;padding:9px 12px;font-size:11px}
-}
-@media(max-width:360px){
-  .apps .app{grid-template-columns:48px minmax(0,1fr) auto;gap:10px}
-  .apps .app-image{width:48px;height:48px;max-width:48px;max-height:48px;border-radius:12px}
-  .apps .download{min-width:0;padding:8px 10px;font-size:10px}
+@media(orientation:landscape) and (max-height:500px){
+ .topbar{min-height:56px;height:auto}
+ .site-menu{overflow-y:auto}
 }
