@@ -614,3 +614,10 @@ body{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
     padding:8px 5px !important;font-size:10px !important;
   }
 }
+
+/* Bottom navigation polish */
+.bottom-nav button b{display:block;font-size:24px;line-height:1.1;font-weight:500}
+.bottom-nav #searchNav b{font-size:30px;line-height:1}
+.bottom-nav #favoritesNav b{font-size:27px;line-height:1}
+.bottom-nav #shopNav b{font-size:23px;line-height:1}
+.bottom-nav button span{display:block}
