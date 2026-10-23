@@ -1,5 +1,5 @@
 {
-  "name": "iPAWORLD — удобный каталог приложений для iPhone",
+  "name": "iPAWORLD — каталог приложений для iPhone и iPad",
   "short_name": "iPAWORLD",
   "start_url": "./",
   "display": "standalone",
@@ -7,11 +7,11 @@
   "theme_color": "#040b14",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "icon.png?v=2",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     }
   ],
-  "description": "iPAWORLD — каталог приложений для iPhone и iPad. Скачивайте IPA-файлы и переходите к установке через Telegram-бота."
+  "description": "iPAWORLD — каталог приложений для iPhone и iPad. Находите приложения и игры, скачивайте IPA-файлы и переходите к установке через Telegram-бота."
 }
