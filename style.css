@@ -246,3 +246,33 @@ body{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
 @media(max-width:359px){.apps{gap:8px}.apps .app{padding:9px;grid-template-columns:38px minmax(0,1fr);gap:8px}.apps .app .app-image{width:38px;height:38px}.apps .app h3{font-size:12px}.apps .app .download{font-size:11px;padding:9px 5px}}
 @media(min-width:600px){.apps{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.apps .app{padding:15px}.about-features{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:759px){main{padding-bottom:calc(112px + env(safe-area-inset-bottom))}.bottom-nav{display:grid}}
+
+
+/* Final mobile polish: compact square app icons, stable two-column cards */
+@media (max-width: 759px) {
+  .apps { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; align-items:stretch !important; }
+  .apps .app { display:flex !important; flex-direction:column !important; align-items:stretch !important; min-width:0 !important; padding:11px !important; gap:9px !important; border-radius:18px !important; }
+  .apps .app .app-image { display:block !important; width:68px !important; height:68px !important; min-width:68px !important; max-width:68px !important; min-height:68px !important; max-height:68px !important; aspect-ratio:1 / 1 !important; object-fit:contain !important; object-position:center !important; border-radius:16px !important; margin:0 auto 2px 0 !important; background:var(--panel2, #101d2c) !important; }
+  .apps .app .app-info { width:100% !important; min-width:0 !important; flex:1 1 auto !important; }
+  .apps .app h3 { display:-webkit-box !important; -webkit-box-orient:vertical !important; -webkit-line-clamp:2 !important; min-height:2.5em !important; overflow:hidden !important; overflow-wrap:anywhere !important; font-size:13px !important; line-height:1.28 !important; margin:0 0 6px !important; }
+  .apps .app p { font-size:11px !important; line-height:1.35 !important; overflow-wrap:anywhere !important; margin:0 !important; color:var(--muted) !important; }
+  .apps .app .download { display:flex !important; align-items:center !important; justify-content:center !important; width:100% !important; min-height:40px !important; padding:9px 5px !important; margin-top:auto !important; font-size:12px !important; line-height:1.2 !important; white-space:normal !important; text-align:center !important; border-radius:12px !important; }
+  .about-project { margin:24px 0 20px !important; padding:19px 15px !important; }
+  .about-features { grid-template-columns:1fr !important; }
+  main { padding-bottom:calc(120px + env(safe-area-inset-bottom)) !important; }
+  .bottom-nav { display:grid !important; position:fixed !important; bottom:0 !important; left:0 !important; right:0 !important; z-index:100 !important; }
+}
+@media (max-width: 380px) {
+  .apps { gap:8px !important; }
+  .apps .app { padding:9px !important; gap:8px !important; }
+  .apps .app .app-image { width:58px !important; height:58px !important; min-width:58px !important; max-width:58px !important; min-height:58px !important; max-height:58px !important; border-radius:14px !important; }
+  .apps .app h3 { font-size:12px !important; }
+  .apps .app .download { font-size:11px !important; }
+}
+@media (min-width: 760px) {
+  .apps { grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:14px !important; }
+  .apps .app { display:grid !important; grid-template-columns:64px minmax(0,1fr) !important; grid-template-rows:auto auto !important; gap:10px !important; padding:14px !important; }
+  .apps .app .app-image { grid-column:1 !important; grid-row:1 !important; width:64px !important; height:64px !important; min-width:64px !important; max-width:64px !important; min-height:64px !important; max-height:64px !important; margin:0 !important; }
+  .apps .app .app-info { grid-column:2 !important; grid-row:1 !important; }
+  .apps .app .download { grid-column:1 / -1 !important; grid-row:2 !important; }
+}
