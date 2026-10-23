@@ -225,3 +225,24 @@ body{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
   .apps { display:grid !important; grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:14px !important; }
   .app { min-width:0 !important; border:1px solid var(--line) !important; border-radius:16px !important; padding:12px !important; }
 }
+
+
+/* iPAWORLD mobile redesign: two-column app cards and a project footer */
+.apps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:stretch}
+.apps .app{display:grid;grid-template-columns:48px minmax(0,1fr);grid-template-rows:auto auto;align-content:start;gap:10px;padding:13px;border:1px solid var(--line);border-radius:18px;background:var(--panel);min-width:0;min-height:0;box-shadow:0 5px 16px #00152b12}
+.apps .app .app-image{grid-column:1;grid-row:1;width:48px;height:48px;border-radius:13px}
+.apps .app .app-info{grid-column:2;grid-row:1;align-self:center;min-width:0}
+.apps .app h3{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;font-size:13px;line-height:1.3;margin:0 0 5px}
+.apps .app p{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;font-size:11px;line-height:1.35}
+.apps .app .download{grid-column:1 / -1;grid-row:2;display:flex;align-items:center;justify-content:center;width:100%;min-width:0;padding:10px 8px;font-size:12px;white-space:normal;text-align:center}
+.about-project{margin:30px 0 22px;padding:22px 18px;border:1px solid color-mix(in srgb,var(--blue) 35%,var(--line));border-radius:24px;background:linear-gradient(145deg,color-mix(in srgb,var(--blue) 13%,var(--panel)),var(--panel) 72%);box-shadow:0 12px 30px #00142b18;overflow:hidden}
+.about-kicker{font-size:10px;font-weight:800;letter-spacing:1.8px;color:var(--blue);margin-bottom:9px}
+.about-project h2{font-size:clamp(20px,5vw,27px);line-height:1.15;margin:0 0 10px;letter-spacing:-.5px}
+.about-project>p{font-size:13px;line-height:1.65;color:var(--muted);margin:0 0 18px}
+.about-features{display:grid;grid-template-columns:1fr;gap:10px}
+.about-features>div{display:flex;flex-direction:column;gap:4px;padding:12px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--panel) 88%,transparent)}
+.about-features strong{font-size:12px}.about-features span{font-size:11px;line-height:1.45;color:var(--muted)}
+.about-bottom{border-top:1px solid var(--line);margin-top:17px;padding-top:13px;font-size:10px;color:var(--muted)}.about-bottom span{color:var(--blue);padding:0 4px}
+@media(max-width:359px){.apps{gap:8px}.apps .app{padding:9px;grid-template-columns:38px minmax(0,1fr);gap:8px}.apps .app .app-image{width:38px;height:38px}.apps .app h3{font-size:12px}.apps .app .download{font-size:11px;padding:9px 5px}}
+@media(min-width:600px){.apps{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.apps .app{padding:15px}.about-features{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:759px){main{padding-bottom:calc(112px + env(safe-area-inset-bottom))}.bottom-nav{display:grid}}
